@@ -1,9 +1,8 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -15,6 +14,12 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
+
+    //실무에서 이렇게 설계하면 잘못된 것
+    //member는 member에 대해서만 알면됨
+    //주문 내역에 회원 정보가 필요하면 주문에서 회원 쿼리를 날릴 수 있음
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
