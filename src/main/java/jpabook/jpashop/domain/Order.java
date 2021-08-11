@@ -18,6 +18,9 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
     //member에 order넣는 것은 잘못된 설계
     //반면에, 이 경우 비즈니스 로직상으로 매우 유효
     //주문서를 뽑았는데, 주문서와 연관된 아이템 목록을 찾을 경우가 많음
